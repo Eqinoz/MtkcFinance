@@ -11,13 +11,13 @@ namespace Business.Abstract
 {
     public interface IUserService
     {
-        List<Users> GetAll();
-        List<Users> GetAllByCompany(string company);
-        List<UserDetailDto> GetUserDetails();
-
+        IDataResult<List<Users>> GetAll();
+        IDataResult<List<Users>> GetAllByCompany(string company);
+        IDataResult<List<UserDetailDto>> GetUserDetails();
+        IDataResult<Users> GetById(int id);
         IResult Add(Users users);
 
-        Users GetById(int id);
+        
 
 
     }

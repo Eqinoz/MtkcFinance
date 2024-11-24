@@ -11,13 +11,26 @@ namespace ConsoleUI
             //UserGet();
             //CompanyGet();
 
+            UserTest();
+
+        }
+
+        private static void UserTest()
+        {
             UserManager userManager = new UserManager(new EfUserDal());
-            foreach (var user in userManager.GetUserDetails())
+            var result = userManager.GetUserDetails();
+            if (result.Success == true)
             {
-                Console.WriteLine(user.UserName+ " "+user.UserSurname+"/"+user.Title+"/"+ user.CompanyName);
+                foreach (var user in result.Data)
+                {
+                    Console.WriteLine(user.UserName + " " + user.UserSurname + "/" + user.Title + "/" + user.CompanyName);
 
+                }
             }
-
+            else
+            {
+                Console.WriteLine(result.Message);
+            }
         }
 
         private static void CompanyGet()
@@ -33,7 +46,7 @@ namespace ConsoleUI
         {
             UserManager userManager = new UserManager(new EfUserDal());
 
-            foreach (var user in userManager.GetAll())
+            foreach (var user in userManager.GetAll().Data)
             {
                 Console.WriteLine(user.UserName + " " + user.UserSurname);
             }
