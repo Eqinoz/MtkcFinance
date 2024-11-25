@@ -32,38 +32,33 @@ namespace Business.Concrete
 
             return new SuccessResult(Messages.UsersAdd);
         }
-         
+
         public IDataResult<List<Users>> GetAll()
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour == 20)
             {
                 return new ErrorDataResult<List<Users>>(Messages.PaymentInTıme);
             }
-           return new SuccessDataResult<List<Users>>(_userDal.GetAll(),Messages.UsersAdd);
+            return new SuccessDataResult<List<Users>>(_userDal.GetAll(), Messages.UsersList);
         }
 
         public IDataResult<List<Users>> GetAllByCompany(int company)
         {
-            return new SuccessDataResult<List<Users>>(_userDal.GetAll(p=> p.CompanyId==company));
-        }
-
-        public IDataResult<List<Users>> GetAllByCompany(string company)
-        {
-            throw new NotImplementedException();
+            return new SuccessDataResult<List<Users>>(_userDal.GetAll(p => p.CompanyId == company));
         }
 
         public IDataResult<Users> GetById(int id)
         {
-            return new SuccessDataResult<Users>(_userDal.Get(p=>p.Id == id));
+            return new SuccessDataResult<Users>(_userDal.Get(p => p.Id == id));
         }
 
         public IDataResult<List<UserDetailDto>> GetUserDetails()
         {
-            if (DateTime.Now.Hour==22)
+            if (DateTime.Now.Hour == 22)
             {
                 return new ErrorDataResult<List<UserDetailDto>>(Messages.PaymentInTıme);
             }
-           return new SuccessDataResult<List<UserDetailDto>>(_userDal.GetUserDetails());
+            return new SuccessDataResult<List<UserDetailDto>>(_userDal.GetUserDetails());
         }
     }
 }
