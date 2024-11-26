@@ -39,6 +39,17 @@ namespace WebAPI.Controllers
             }
             return BadRequest(result);
         }
+
+        [HttpGet("GetLogin")]
+        public IActionResult GetLogin(string mail, string psw)
+        {
+           var result = _userService.GetLogin(mail, psw);
+            if (result.Success==true)
+            {
+                return Ok(result.Success);
+            }
+            return BadRequest(result.Success);
+        }
         [HttpPost]
         public IActionResult Post(Users users) {
             var result = _userService.Add(users);

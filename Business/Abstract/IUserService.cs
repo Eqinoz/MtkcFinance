@@ -12,6 +12,7 @@ namespace Business.Abstract
     public interface IUserService
     {
         IDataResult<List<Users>> GetAll();
+        IDataResult<List<Users>> GetLogin(string mail, string psw);
         IDataResult<List<Users>> GetAllByCompany(int companyId);
         IDataResult<List<UserDetailDto>> GetUserDetails();
         IDataResult<Users> GetById(int id);

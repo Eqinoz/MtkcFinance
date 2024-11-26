@@ -42,6 +42,17 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Users>>(_userDal.GetAll(), Messages.UsersList);
         }
 
+        public IDataResult<List<Users>> GetLogin(string mail, string psw)
+        {
+            if (_userDal.Get(p => p.Mail == mail && p.Psw == psw)!= null)
+            {
+                return new SuccessDataResult<List<Users>>();
+            }
+
+            return new ErrorDataResult<List<Users>>();
+        }
+
+
         public IDataResult<List<Users>> GetAllByCompany(int company)
         {
             return new SuccessDataResult<List<Users>>(_userDal.GetAll(p => p.CompanyId == company));

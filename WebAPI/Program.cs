@@ -1,6 +1,10 @@
 
+using Autofac;
+using Autofac.Core;
+using Autofac.Extensions.DependencyInjection;
 using Business.Abstract;
 using Business.Concrete;
+using Business.DependencyResolvers.Autofac;
 using DataAccess.Abstract;
 using DataAccess.Concrete.EntityFramework;
 
@@ -12,8 +16,13 @@ namespace WebAPI
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            builder.Services.AddScoped<IUserService,UserManager>();
-            builder.Services.AddScoped<IUserDal, EfUserDal>();
+            
+
+            //builder.Services.AddScoped<IUserService,UserManager>();
+            //builder.Services.AddScoped<IUserDal, EfUserDal>();
+
+            //builder.Services.AddScoped<ICompanyService, CompanyManager>();
+            //builder.Services.AddScoped<ICompanyDal, EfCompanyDal>();
 
             // Add services to the container.
 
@@ -21,6 +30,12 @@ namespace WebAPI
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
+
+            builder.Host.UseServiceProviderFactory(services => new AutofacServiceProviderFactory())
+                .ConfigureContainer<ContainerBuilder>(builder =>
+                {
+                    builder.RegisterModule(new AutofacBusinessModule());
+                });
 
             var app = builder.Build();
 
