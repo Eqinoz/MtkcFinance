@@ -35,11 +35,11 @@ namespace ConsoleUI
 
         private static void CompanyGet()
         {
-            CompanyManager companyManager = new CompanyManager(new EfCompanyDal());
-            foreach (var company in companyManager.GetAll())
-            {
-                Console.WriteLine(company.CompanyName);
-            }
+            //CompanyManager companyManager = new CompanyManager(new EfCompanyDal());
+            //foreach (var company in companyManager.GetAll())
+            //{
+            //    Console.WriteLine();
+            //}
         }
 
         private static void UserGet()
