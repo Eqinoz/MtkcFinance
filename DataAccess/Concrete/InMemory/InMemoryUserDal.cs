@@ -16,7 +16,7 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryUserDal()
         {
             _users = new List<Users> {
-                new Users{Id=1, UserName="Sinan",UserSurname="Özuncu", CompanyId=1, Mail="eee@", Phone="8888", Psw="dsdsd", Title="Admin" }
+                new Users{Id=1, UserName="Sinan",UserSurname="Özuncu", CompanyId=1, Mail="eee@", Phone="8888", Psw="dsdsd", TitleId= 1 }
                 
             };
         }

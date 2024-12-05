@@ -23,7 +23,7 @@ namespace ConsoleUI
             {
                 foreach (var user in result.Data)
                 {
-                    Console.WriteLine(user.UserName + " " + user.UserSurname + "/" + user.Title + "/" + user.CompanyName);
+                    Console.WriteLine(user.UserName + " " + user.UserSurname + "/" + user.Title + "/" + user.CompanyName + "/");
 
                 }
             }
@@ -42,14 +42,14 @@ namespace ConsoleUI
             //}
         }
 
-        private static void UserGet()
-        {
-            UserManager userManager = new UserManager(new EfUserDal());
+        //private static void UserGet()
+        //{
+        //    UserManager userManager = new UserManager(new EfUserDal());
 
-            foreach (var user in userManager.GetAll().Data)
-            {
-                Console.WriteLine(user.UserName + " " + user.UserSurname);
-            }
-        }
+        //    foreach (var user in userManager.GetAll().Data)
+        //    {
+        //        Console.WriteLine(user.UserName + " " + user.UserSurname);
+        //    }
+        //}
     }
 }

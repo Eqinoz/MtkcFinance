@@ -16,5 +16,6 @@ namespace Business.Constants
 
         public static string CompanyList = "Şirketler Listelendi";
         public static string CompanyNameError = "Şirket İsmi 5 Karakterden Az Olamaz";
+        public static string UserNameAlreadyExists = "Bu Kullanıcı Zaten Ekli";
     }
 }

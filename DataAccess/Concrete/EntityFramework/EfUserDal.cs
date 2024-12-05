@@ -19,8 +19,8 @@ namespace DataAccess.Concrete.EntityFramework
             using (MtkcContext context = new MtkcContext())
             {
                 var result = from u in context.Users
-                             join c in context.Company on
-                             u.CompanyId equals c.Id
+                             join c in context.Company on u.CompanyId equals c.Id
+                             join t in context.Title on u.TitleId equals t.Id
                              select new UserDetailDto
                              {
                                  Id = u.Id,
@@ -28,7 +28,7 @@ namespace DataAccess.Concrete.EntityFramework
                                  UserSurname = u.UserSurname,
                                  CompanyName = c.CompanyName,
                                  Psw = u.Psw,
-                                 Title = u.Title,
+                                 Title = t.TitleName,
                                  UserEmail = u.Mail,
                                  UserPhone = u.Phone
                              };

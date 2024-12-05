@@ -15,7 +15,7 @@ namespace Entities.Concrete
         public string? Mail { get; set; }
         public string? Psw { get; set; }
         public string? Phone { get; set; }
-        public string? Title { get; set; }
+        public int? TitleId { get; set; }
         public int? CompanyId { get; set; }
     }
 }
