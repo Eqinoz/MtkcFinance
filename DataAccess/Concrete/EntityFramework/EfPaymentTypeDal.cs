@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace DataAccess.Concrete.EntityFramework
 {
-    public class EfPaymentType: EfEntityRepositoryBase<PaymentType,MtkcContext>,IPaymentTypeDal
+    public class EfPaymentTypeDal: EfEntityRepositoryBase<PaymentType,MtkcContext>,IPaymentTypeDal
     {
     }
 }

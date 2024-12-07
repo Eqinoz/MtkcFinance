@@ -35,14 +35,10 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Company>>(_companyDal.GetAll(), Messages.CompanyList);
         }
 
-        public IDataResult<List<Company>> GetById(int id)
-        {
-            return new SuccessDataResult<List<Company>>(_companyDal.GetAll(p => p.Id == id));
-        }
 
-        public IDataResult<List<Company>> GetByName(string name)
+        public IDataResult<Company> GetById(string name)
         {
-            throw new NotImplementedException();
+            return new SuccessDataResult<Company> (_companyDal.Get(p => p.CompanyName == name));
         }
     }
 }

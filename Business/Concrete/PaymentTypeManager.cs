@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Core.Utilities.Results;
 using DataAccess.Abstract;
 using Entities.Concrete;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.Constants;
 
 namespace Business.Concrete
 {
@@ -17,9 +19,21 @@ namespace Business.Concrete
         {
             _paymentTypeDal= paymentTypeDal;
         }
-        public List<PaymentType> GetAll()
+
+        public IResult Add(PaymentType paymentType)
         {
-            return _paymentTypeDal.GetAll();
+            _paymentTypeDal.Add(paymentType);
+            return new SuccessResult(Messages.PaymentTypeAdd);
+        }
+
+        public IDataResult<List<PaymentType>> GetAll()
+        {
+            return new SuccessDataResult<List<PaymentType>>(_paymentTypeDal.GetAll(),Messages.PaymentList);
+        }
+
+        public IDataResult<PaymentType> GetById(string name)
+        {
+            return new SuccessDataResult<PaymentType>(_paymentTypeDal.Get(p => p.Payment_Type == name));
         }
     }
 }

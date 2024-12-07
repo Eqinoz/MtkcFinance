@@ -25,6 +25,12 @@ namespace Business.DependencyResolvers.Autofac
             builder.RegisterType<CompanyManager>().As<ICompanyService>().SingleInstance();
             builder.RegisterType<EfCompanyDal>().As<ICompanyDal>().SingleInstance();
 
+            builder.RegisterType<PaymentListManager>().As<IPaymentListService>().SingleInstance();
+            builder.RegisterType<EfPaymentListDal>().As<IPaymentListDal>().SingleInstance();
+
+            builder.RegisterType<PaymentTypeManager>().As<IPaymentTypeService>().SingleInstance();
+            builder.RegisterType<EfPaymentTypeDal>().As<IPaymentTypeDal>().SingleInstance();
+
             var assembly = System.Reflection.Assembly.GetExecutingAssembly();
 
             builder.RegisterAssemblyTypes(assembly).AsImplementedInterfaces()

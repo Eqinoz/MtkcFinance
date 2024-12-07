@@ -11,8 +11,7 @@ namespace Business.Abstract
     public interface ICompanyService
     {
         IDataResult<List<Company>> GetAll();
-        IDataResult<List<Company>> GetById(int id);
-        IDataResult<List<Company>> GetByName(string name);
+        IDataResult<Company> GetById(string name);
         IResult Add(Company company);
 
     }

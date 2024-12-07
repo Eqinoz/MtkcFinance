@@ -19,6 +19,7 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Company> Company { get; set; }
         public DbSet<PaymentType> PaymentType { get; set; }
         public DbSet<Title> Title { get; set; }
+        public DbSet<PaymentList> PaymentList { get; set; }
 
 
 

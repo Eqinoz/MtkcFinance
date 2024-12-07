@@ -10,6 +10,6 @@ namespace Entities.Concrete
     public class PaymentType:IEntity
     {
         public int Id { get; set; }
-        public string PaymentTye { get; set; }
+        public string? Payment_Type { get; set; }
     }
 }

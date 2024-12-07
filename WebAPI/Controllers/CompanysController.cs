@@ -1,4 +1,5 @@
 ﻿using Business.Abstract;
+using Entities.Concrete;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -27,10 +28,12 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet]
-        public IActionResult GetId(int id)
+        
+
+        [HttpPost]
+        public IActionResult Post(Company company)
         {
-            var result = _companyService.GetById(id);
+            var result = _companyService.Add(company);
             if (result.Success)
             {
                 return Ok(result);

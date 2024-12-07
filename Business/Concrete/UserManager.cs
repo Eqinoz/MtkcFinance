@@ -14,6 +14,7 @@ using Business.CCS;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Validation;
 using Core.CrossCuttingConcerns.Validation;
+using Core.Utilities.Business;
 using FluentValidation;
 using ValidationException = FluentValidation.ValidationException;
 
@@ -34,14 +35,13 @@ namespace Business.Concrete
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(Users users)
         {
-            if (CheckIfUser(users.UserName, users.UserSurname).Success)
+          IResult result =  BusinessRules.Run(CheckIfUser(users.UserName, users.UserSurname));
+            if (result != null)
             {
-                _userDal.Add(users);
-
-            return new SuccessResult(Messages.UsersAdd);
+                return result;
             }
-
-            return new ErrorResult();
+            _userDal.Add(users);
+            return new SuccessResult(Messages.UsersList);
         }
 
         public IDataResult<List<Users>> GetAll()
@@ -93,5 +93,13 @@ namespace Business.Concrete
 
             return new SuccessResult();
         }
+
+        public IDataResult<Users> GetByName(string name, string lastname)
+        {
+           var result= _userDal.Get(p => p.UserName == name && p.UserSurname == lastname);
+
+           return new SuccessDataResult<Users>(result);
+        }
+        
     }
 }
