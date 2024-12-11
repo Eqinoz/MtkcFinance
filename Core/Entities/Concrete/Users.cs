@@ -1,11 +1,4 @@
-﻿using Core.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Entities.Concrete
+﻿namespace Core.Entities.Concrete
 {
     public class Users : IEntity
     {
@@ -13,7 +6,8 @@ namespace Entities.Concrete
         public string UserName { get; set; }
         public string UserSurname{ get; set; }
         public string? Mail { get; set; }
-        public string? Psw { get; set; }
+        public byte[]? PswSalt { get; set; }
+        public byte[]? PswHash { get; set; }
         public string? Phone { get; set; }
         public int? TitleId { get; set; }
         public int? CompanyId { get; set; }

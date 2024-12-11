@@ -7,6 +7,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using Core.Entities.Concrete;
 
 namespace DataAccess.Concrete.InMemory
 {
@@ -16,7 +17,7 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryUserDal()
         {
             _users = new List<Users> {
-                new Users{Id=1, UserName="Sinan",UserSurname="Özuncu", CompanyId=1, Mail="eee@", Phone="8888", Psw="dsdsd", TitleId= 1 }
+                new Users{Id=1, UserName="Sinan",UserSurname="Özuncu", CompanyId=1, Mail="eee@", Phone="8888", TitleId= 1 }
                 
             };
         }

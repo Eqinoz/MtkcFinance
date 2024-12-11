@@ -22,5 +22,7 @@ namespace Business.Constants
         public static string PaymentTypeAdd = "Ödeme Şekli Eklendi";
 
         public static string SuccessPaymentList = "Ödeme Eklendi";
+
+        public static string AuthorizationDenied= "Yetkiniz Yok.";
     }
 }

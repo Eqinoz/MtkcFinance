@@ -15,7 +15,8 @@ namespace Entities.DTOs
         public string UserSurname { get; set; }
         public string UserEmail { get; set; }
         public string UserPhone { get; set; }
-        public string Psw {  get; set; }
+        public byte[] PswSalt {  get; set; }
+        public byte[] PswHash { get; set; }
         public string Title { get; set; }
         public string CompanyName { get; set; }
 
