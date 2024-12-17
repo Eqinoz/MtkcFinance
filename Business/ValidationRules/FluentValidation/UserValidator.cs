@@ -16,7 +16,7 @@ namespace Business.ValidationRules.FluentValidation
         {
             RuleFor(p => p.LastName).MinimumLength(3);//minimum 2 karakter 
             RuleFor(p=>p.Mail).NotEmpty();// boş geçilemez
-            RuleFor(p => p.CompanyId).NotEmpty();
+            
         }
     }
 }

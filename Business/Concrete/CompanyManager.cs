@@ -9,6 +9,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
 
 namespace Business.Concrete
 {
@@ -20,14 +22,10 @@ namespace Business.Concrete
             _companyDal = companyDal;
         }
 
-        [SecuredOperation(" Admin")]
+        [SecuredOperation("company.add,Admin")]
+        [ValidationAspect(typeof(CompanyValidator)) ]
         public IResult Add(Company company)
         {
-            if (company.CompanyName.Length<=5)
-            {
-                return new ErrorResult(Messages.CompanyNameError);
-            }
-
             _companyDal.Add(company);
             return new SuccessResult();
         }

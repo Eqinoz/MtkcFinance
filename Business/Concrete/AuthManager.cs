@@ -34,7 +34,7 @@ namespace Business.Concrete
             var title = context.Title.Where(x => x.TitleName == userForRegisterDto.TitleName).FirstOrDefault();
             var user = new Users()
             {
-                Mail = userForRegisterDto.Email,
+                Mail = userForRegisterDto.mail,
                 FirstName = userForRegisterDto.FirstName,
                 LastName = userForRegisterDto.LastName,
                 PswHash = passwordHash,
