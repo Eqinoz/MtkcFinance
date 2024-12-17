@@ -17,7 +17,17 @@ namespace DataAccess.Concrete.EntityFramework
     {
         public List<Title> GetClaims(Users users)
         {
-            throw new NotImplementedException();
+            using (MtkcContext context = new MtkcContext())
+            {
+                var result = from t in context.Title
+                    where users.TitleId == t.Id
+                    select new Title
+                    {
+                        Id = t.Id,
+                        TitleName = t.TitleName
+                    };
+                return result.ToList();
+            }
         }
 
         public List<UserDetailDto> GetUserDetails()
@@ -30,14 +40,15 @@ namespace DataAccess.Concrete.EntityFramework
                              select new UserDetailDto
                              {
                                  Id = u.Id,
-                                 UserName = u.UserName,
-                                 UserSurname = u.UserSurname,
+                                 FirstName = u.FirstName,
+                                 LastName = u.LastName,
                                  CompanyName = c.CompanyName,
                                  PswSalt = u.PswSalt,
                                  PswHash = u.PswHash,
                                  Title = t.TitleName,
                                  UserEmail = u.Mail,
-                                 UserPhone = u.Phone
+                                 UserPhone = u.Phone,
+                                 Status = u.Status
                              };
                 return result.ToList();
 

@@ -14,7 +14,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public UserValidator()
         {
-            RuleFor(p => p.UserName).MinimumLength(3);//minimum 2 karakter 
+            RuleFor(p => p.LastName).MinimumLength(3);//minimum 2 karakter 
             RuleFor(p=>p.Mail).NotEmpty();// boş geçilemez
             RuleFor(p => p.CompanyId).NotEmpty();
         }

@@ -17,7 +17,7 @@ namespace DataAccess.Concrete.InMemory
         public InMemoryUserDal()
         {
             _users = new List<Users> {
-                new Users{Id=1, UserName="Sinan",UserSurname="Özuncu", CompanyId=1, Mail="eee@", Phone="8888", TitleId= 1 }
+                new Users{Id=1, FirstName= "Sinan",LastName= "Özuncu", CompanyId=1, Mail="eee@", Phone="8888", TitleId= 1 }
                 
             };
         }
@@ -42,6 +42,11 @@ namespace DataAccess.Concrete.InMemory
         }
 
         public List<Users> GetAll(Expression<Func<Users, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Title> GetClaims(Users users)
         {
             throw new NotImplementedException();
         }

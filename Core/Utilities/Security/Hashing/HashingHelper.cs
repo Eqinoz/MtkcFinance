@@ -8,7 +8,7 @@ namespace Core.Utilities.Security.Hashing
 {
     public class HashingHelper
     {
-        public static void CreataPasswordHash(
+        public static void CreatePasswordHash(
             string password, out byte[] pswHash, out byte[] pswSalt)
         {
             using (var hmac= new System.Security.Cryptography.HMACSHA512())

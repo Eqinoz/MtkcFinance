@@ -23,7 +23,7 @@ namespace ConsoleUI
             {
                 foreach (var user in result.Data)
                 {
-                    Console.WriteLine(user.UserName + " " + user.UserSurname + "/" + user.Title + "/" + user.CompanyName + "/");
+                    Console.WriteLine(user.FirstName + " " + user.LastName + "/" + user.Title + "/" + user.CompanyName + "/");
 
                 }
             }

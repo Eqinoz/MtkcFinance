@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.Utilities.Security.JWT;
+using Entities.DTOs;
 
 namespace Business.Abstract
 {

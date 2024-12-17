@@ -13,11 +13,11 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"server=YOSHI\YOSHI;Database=MTKC;Trusted_Connection=true;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer(@"Server=tcp:mtkc.database.windows.net,1433;Initial Catalog=mtk;Persist Security Info=False;User ID=sinan;Password=Ozuncu13579;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
         }
 
-        public DbSet<Users> Users { get; set; }
-        public DbSet<Company> Company { get; set; }
+        public DbSet<Users> Users { get; set; } 
+        public DbSet<Company> Company { get; set; } 
         public DbSet<PaymentType> PaymentType { get; set; }
         public DbSet<Title> Title { get; set; }
         public DbSet<PaymentList> PaymentList { get; set; }
