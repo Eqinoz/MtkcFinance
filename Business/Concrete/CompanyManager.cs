@@ -10,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Caching;
 using Core.Aspects.Autofac.Validation;
 
 namespace Business.Concrete
@@ -29,7 +30,7 @@ namespace Business.Concrete
             _companyDal.Add(company);
             return new SuccessResult();
         }
-
+        [CacheAspect]
         public IDataResult<List<Company>> GetAll()
         {
             return new SuccessDataResult<List<Company>>(_companyDal.GetAll(), Messages.CompanyList);
