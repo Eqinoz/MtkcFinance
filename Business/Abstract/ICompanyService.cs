@@ -13,6 +13,7 @@ namespace Business.Abstract
         IDataResult<List<Company>> GetAll();
         IDataResult<Company> GetById(string name);
         IResult Add(Company company);
+        IResult Delete(int id);
 
     }
 }

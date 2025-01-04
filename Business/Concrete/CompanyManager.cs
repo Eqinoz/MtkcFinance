@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Business.ValidationRules.FluentValidation;
 using Core.Aspects.Autofac.Caching;
+using Core.Aspects.Autofac.Transaction;
 using Core.Aspects.Autofac.Validation;
 
 namespace Business.Concrete
@@ -23,14 +24,31 @@ namespace Business.Concrete
             _companyDal = companyDal;
         }
 
-        [SecuredOperation("company.add,Admin")]
+        //[SecuredOperation("company.add,Admin")]
         [ValidationAspect(typeof(CompanyValidator)) ]
+        //[CacheRemoveAspect("ICompanyService.GetAll,ICompanyService.Delete,ICompanyService.Add")]
+        //[TransactionScopeAspect]
         public IResult Add(Company company)
         {
             _companyDal.Add(company);
-            return new SuccessResult();
+            return new Result(true, Messages.CompanyAdd);
+            
         }
-        [CacheAspect]
+       // [CacheRemoveAspect("ICompanyService.GetAll,ICompanyService.Delete,ICompanyService.Add")]
+        public IResult Delete(int id)
+        {
+            Company company = _companyDal.Get(x => x.Id == id);
+            if (company!=null)
+            {
+                _companyDal.Delete(company);
+                return new Result(true, Messages.CompanyDeleted);
+            }
+
+            return new Result(false, Messages.CompanyNotDeleted);
+
+        }
+        
+        //[CacheRemoveAspect("ICompanyService.GetAll,ICompanyService.Delete,ICompanyService.Add")]
         public IDataResult<List<Company>> GetAll()
         {
             return new SuccessDataResult<List<Company>>(_companyDal.GetAll(), Messages.CompanyList);

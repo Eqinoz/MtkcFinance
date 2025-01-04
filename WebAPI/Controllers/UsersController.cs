@@ -13,13 +13,14 @@ namespace WebAPI.Controllers
     public class UsersController : ControllerBase
     {
         IUserService _userService;
+        IAuthService _authService;
 
         public UsersController(IUserService userService)
         {
             _userService = userService;
         }
 
-        [HttpGet("GetAll")]
+        [HttpGet("getall")]
         public IActionResult Get()
         {
             var result = _userService.GetAll();
@@ -31,7 +32,7 @@ namespace WebAPI.Controllers
 
         }
 
-        [HttpGet("GetDetails")]
+        [HttpGet("getdetails")]
         public IActionResult GetDetail()
         {
             var result = _userService.GetUserDetails();
@@ -42,7 +43,7 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        [HttpGet("GetById")]
+        [HttpGet("getbycompanyid")]
         public IActionResult Get(int id)
         {
             var result = _userService.GetAllByCompany(id);
@@ -53,31 +54,33 @@ namespace WebAPI.Controllers
             return BadRequest(result);
         }
 
-        //[HttpGet("GetLogin")]
-        //public IActionResult GetLogin(string mail, string psw)
-        //{
-        //   var result = _userService.GetLogin(mail, psw);
-        //    if (result.Success==true)
-        //    {
-        //        return Ok(result.Success);
-        //    }
-        //    return BadRequest(result.Success);
-        //}
+        
 
-        [HttpGet("GetUserId")]
+        [HttpGet("getuserid")]
         public IActionResult GetUserId(string name, string lastname)
         {
-            var result = _userService.GetByName(name, lastname);
+            var result = _userService.GetByName(name);
             if (result.Success == true)
             {
                 return Ok(result);
             }
             return BadRequest();
         }
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult Post(Users users) {
             var result = _userService.Add(users);
              if (result.Success) {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpDelete("del")]
+        public IActionResult Delete(int id)
+        {
+            var result = _userService.Deleted(id);
+            if (result.Success)
+            {
                 return Ok(result);
             }
             return BadRequest(result);

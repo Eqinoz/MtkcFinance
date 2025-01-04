@@ -4,7 +4,7 @@
   "parameters": {
     "resourceGroupName": {
       "type": "string",
-      "defaultValue": "api79_rg",
+      "defaultValue": "Turkey",
       "metadata": {
         "_parameterType": "resourceGroup",
         "description": "Name of the resource group for the resource. It is recommended to put resources under same resource group for better tracking."
@@ -12,7 +12,7 @@
     },
     "resourceGroupLocation": {
       "type": "string",
-      "defaultValue": "francecentral",
+      "defaultValue": "canadacentral",
       "metadata": {
         "_parameterType": "location",
         "description": "Location of the resource group. Resource groups could have different location than resources."
@@ -36,7 +36,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('WebAPI', subscription().subscriptionId)))]",
+      "name": "[concat(parameters('resourceGroupName'), 'Deployment', uniqueString(concat('WebAPI;rev=2', subscription().subscriptionId)))]",
       "resourceGroup": "[parameters('resourceGroupName')]",
       "apiVersion": "2019-10-01",
       "dependsOn": [
@@ -49,17 +49,17 @@
           "contentVersion": "1.0.0.0",
           "resources": [
             {
-              "name": "api79-ms",
+              "name": "WebAPI79",
               "type": "Microsoft.ApiManagement/service",
               "location": "[parameters('resourceLocation')]",
               "properties": {
                 "publisherEmail": "extazybaddy79@outlook.com",
-                "publisherName": "sinan",
+                "publisherName": "Sinan Özuncu",
                 "notificationSenderEmail": "apimgmt-noreply@mail.windowsazure.com",
                 "hostnameConfigurations": [
                   {
                     "type": "Proxy",
-                    "hostName": "api79-ms.azure-api.net",
+                    "hostName": "webapi79.azure-api.net",
                     "encodedCertificate": null,
                     "keyVaultId": null,
                     "certificatePassword": null,
@@ -95,13 +95,13 @@
             },
             {
               "type": "Microsoft.ApiManagement/service/apis",
-              "name": "api79-ms/WebAPI",
+              "name": "WebAPI79/WebAPI;rev=2",
               "properties": {
-                "displayName": "WebAPI",
-                "apiRevision": "1",
+                "displayName": "WebAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null",
+                "apiRevision": "2",
                 "description": null,
-                "subscriptionRequired": true,
-                "serviceUrl": null,
+                "subscriptionRequired": false,
+                "serviceUrl": "https://webapi20241214192450.azurewebsites.net",
                 "path": "",
                 "protocols": [
                   "https"
@@ -113,12 +113,11 @@
                 "subscriptionKeyParameterNames": {
                   "header": "Ocp-Apim-Subscription-Key",
                   "query": "subscription-key"
-                },
-                "isCurrent": true
+                }
               },
               "apiVersion": "2019-12-01",
               "dependsOn": [
-                "api79-ms"
+                "WebAPI79"
               ]
             }
           ]

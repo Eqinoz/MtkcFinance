@@ -7,10 +7,11 @@ using Core.Entities;
 
 namespace Entities.DTOs
 {
-    public class PaymentListDetailDto:IDto
+    public class HistoryPaymentListDetailDto:IDto
     {
         public int Id { get; set; }
         public DateTime DateAdded { get; set; }
+        public DateTime DatePaid { get; set; }
         public string UserName { get; set; }
         public string CompanyName { get; set; }
         public string PaymentOfPlace { get; set; }

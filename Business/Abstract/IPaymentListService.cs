@@ -15,5 +15,6 @@ namespace Business.Abstract
         IDataResult<PaymentListDetailDto> Get(int id);
         IDataResult<PaymentListDetailDto> Get(string name);
         IResult Add(PaymentList paymentList);
+        IResult Deleted(int id);
     }
 }

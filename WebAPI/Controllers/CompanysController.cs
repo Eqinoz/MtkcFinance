@@ -18,7 +18,7 @@ namespace WebAPI.Controllers
         }
 
 
-        [HttpGet("GetAll")]
+        [HttpGet("getall")]
         public IActionResult Get() { 
             var result = _companyService.GetAll();
             if (result.Success)
@@ -30,10 +30,21 @@ namespace WebAPI.Controllers
 
         
 
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult Post(Company company)
         {
             var result = _companyService.Add(company);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
+
+        [HttpPost("deleted")]
+        public IActionResult Post(int id)
+        {
+            var result = _companyService.Delete(id);
             if (result.Success)
             {
                 return Ok(result);

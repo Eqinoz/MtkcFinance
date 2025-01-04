@@ -12,7 +12,7 @@ namespace Business.ValidationRules.FluentValidation
     {
         public CompanyValidator()
         {
-            RuleFor(p => p.CompanyName).MinimumLength(3);
+            RuleFor(p => p.CompanyName).MinimumLength(3).WithMessage("Şirket İsmi Minimum 3 Karakter Olmalı");
         }
     }
 }

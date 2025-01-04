@@ -18,6 +18,7 @@ using Core.CrossCuttingConcerns.Validation;
 using Core.Entities.Concrete;
 using Core.Utilities.Business;
 using FluentValidation;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.VisualBasic;
 using ValidationException = FluentValidation.ValidationException;
 
@@ -47,6 +48,18 @@ namespace Business.Concrete
             return new SuccessResult(Messages.UsersList);
         }
 
+        public IResult Deleted(int id)
+        {
+            Users users = _userDal.Get(x => x.Id == id);
+            if (users != null)
+            {
+                _userDal.Delete(users);
+                return new Result(true, Messages.UsersDeleted);
+            }
+
+            return new Result(false, Messages.UsersNotDeleted);
+        }
+
         public IDataResult<List<Users>> GetAll()
         {
             if (DateTime.Now.Hour == 20)
@@ -66,10 +79,7 @@ namespace Business.Concrete
 
         public IDataResult<List<UserDetailDto>> GetUserDetails()
         {
-            if (DateTime.Now.Hour == 22)
-            {
-                return new ErrorDataResult<List<UserDetailDto>>(Messages.PaymentInTıme);
-            }
+            
             return new SuccessDataResult<List<UserDetailDto>>(_userDal.GetUserDetails(), Messages.UsersList);
         }
 
@@ -84,9 +94,13 @@ namespace Business.Concrete
             return new SuccessResult();
         }
 
-        public IDataResult<Users> GetByName(string name, string lastname)
+        public IDataResult<Users> GetByName(string name)
         {
-           var result= _userDal.Get(p => p.FirstName == name && p.LastName == lastname);
+            string[] _name = name.Split(' ');
+            string userName, UserLastName;
+            userName= _name[0];
+            UserLastName = _name[1];
+           var result= _userDal.Get(p => p.FirstName == userName && p.LastName==UserLastName);
 
            return new SuccessDataResult<Users>(result);
         }

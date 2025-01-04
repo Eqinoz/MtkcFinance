@@ -18,10 +18,11 @@ namespace Business.Abstract
         IDataResult<List<Users>> GetAllByCompany(int companyId);
         IDataResult<List<UserDetailDto>> GetUserDetails();
         
-        IDataResult<Users> GetByName(string name, string lastname);
+        IDataResult<Users> GetByName(string name);
         IResult Add(Users users);
+        IResult Deleted(int id);
 
-        
+
 
 
     }

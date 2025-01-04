@@ -7,6 +7,7 @@ using Business.Abstract;
 using Business.Constants;
 using Core.Utilities.Results;
 using DataAccess.Abstract;
+using DataAccess.Concrete.EntityFramework;
 using Entities.Concrete;
 using Entities.DTOs;
 
@@ -26,6 +27,18 @@ namespace Business.Concrete
         {
             _paymentListDal.Add(paymentList);
             return new SuccessResult(Messages.SuccessPaymentList);
+        }
+
+        public IResult Deleted(int id)
+        {
+            PaymentList paymentList = _paymentListDal.Get(x => x.Id == id);
+            if (paymentList != null)
+            {
+                _paymentListDal.Delete(paymentList);
+                return new Result(true, Messages.PaymentDeleted);
+            }
+
+            return new Result(false, Messages.PaymentNotDeleted);
         }
 
         public IDataResult<PaymentListDetailDto> Get(int id)

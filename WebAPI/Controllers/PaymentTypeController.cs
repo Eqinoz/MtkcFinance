@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
             _paymentTypeService = paymentTypeService;
         }
 
-        [HttpGet]
+        [HttpGet("getall")]
         public IActionResult Get()
         {
             var result = _paymentTypeService.GetAll();
@@ -27,7 +27,7 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpGet("GetByName")]
+        [HttpGet("getid")]
         public IActionResult Get(string name)
         {
             var result = _paymentTypeService.GetById(name);
@@ -38,7 +38,7 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult Post(PaymentType paymentType)
         {
             var result = _paymentTypeService.Add(paymentType);

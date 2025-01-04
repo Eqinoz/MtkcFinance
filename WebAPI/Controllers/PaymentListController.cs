@@ -26,7 +26,7 @@ namespace WebAPI.Controllers
             _paymentTypeService = paymentTypeService;
         }
 
-        [HttpGet]
+        [HttpGet("getall")]
         public IActionResult Get()
         {
             var result = _paymentListService.GetAll();
@@ -37,14 +37,15 @@ namespace WebAPI.Controllers
             return BadRequest();
         }
 
-        [HttpPost]
+        [HttpPost("add")]
         public IActionResult Post(PaymentListDetailDto paymentListDetail)
         {
-            int UserId = _userService.GetByName(paymentListDetail.UserName, paymentListDetail.UserLastName).Data.Id;
+            int UserId = _userService.GetByName(paymentListDetail.UserName).Data.Id;
             int CompanyId = _companyService.GetById(paymentListDetail.CompanyName).Data.Id;
             int PaymentTypeId = _paymentTypeService.GetById(paymentListDetail.PaymentType).Data.Id;
             PaymentList paymentList = new PaymentList();
             paymentList.UsersId = UserId;
+            paymentList.DateAdded = DateTime.Now;
             paymentList.CompanyId = CompanyId;
             paymentList.PaymentTypeId = PaymentTypeId;
             paymentList.Description= paymentListDetail.Description;
@@ -58,6 +59,18 @@ namespace WebAPI.Controllers
             }
 
             return BadRequest();
+        }
+
+        [HttpDelete("deleted")]
+        public IActionResult Delete(int id)
+        {
+            var result = _paymentListService.Deleted(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+
         }
     }
 }

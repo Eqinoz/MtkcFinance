@@ -23,8 +23,8 @@ namespace DataAccess.Concrete.EntityFramework
                     select new PaymentListDetailDto
                     {
                         Id = pl.Id,
-                        UserName = u.FirstName ,
-                        UserLastName = u.LastName,
+                        DateAdded = pl.DateAdded,
+                        UserName = u.FirstName+" "+u.LastName ,
                         CompanyName = c.CompanyName,
                         PaymentOfPlace = pl.PlaceOfPayment,
                         PaymentType = pt.Payment_Type,

@@ -10,6 +10,7 @@ namespace Entities.Concrete
     public class PaymentList:IEntity
     {
         public int Id { get; set; }
+        public DateTime DateAdded { get; set; }
         public int UsersId { get; set; }
         public int CompanyId { get; set; }
         public string PlaceOfPayment { get; set; }

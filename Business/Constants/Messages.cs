@@ -17,14 +17,19 @@ namespace Business.Constants
         public static string UssersPswError = "Şifre 8 Karakterden Küçük Olduğundan Kullanıcı Ekelenemedi!";
         public static string PaymentInTıme = "Sisteme Ödeme Kaydetme Süreniz Doldu";
         public static string UserNameAlreadyExists = "Bu Kullanıcı Zaten Ekli";
+        public static string UsersDeleted = "Kullanıcı Silindi.";
+        public static string UsersNotDeleted = "Kullanıcı Silinemedi!";
 
         #endregion
-        
+
 
         #region Company
 
         public static string CompanyList = "Şirketler Listelendi";
         public static string CompanyNameError = "Şirket İsmi 5 Karakterden Az Olamaz";
+        public static string CompanyAdd = "Şirket Eklendi";
+        public static string CompanyDeleted = "Şirket Başarı İle Silindi";
+        public static string CompanyNotDeleted = "Şirket Silinemedi";
 
         #endregion
 
@@ -32,16 +37,22 @@ namespace Business.Constants
 
         public static string PaymentList = "Ödeme Şekli Listelendi";
         public static string PaymentTypeAdd = "Ödeme Şekli Eklendi";
-
         public static string SuccessPaymentList = "Ödeme Eklendi";
+        public static string PaymentDeleted = "Ödeme Sİlindi";
+        public static string PaymentNotDeleted = "Ödeme Silinemedi";
+
+        #endregion
+
+        #region Title
+
+        public static string TitleList = "Ünvanlar Listelendi";
+        public static string TitleAdd = "Ünvan Eklendi";
 
         #endregion
 
 
 
-        
-
-        public static string AuthorizationDenied= "Yetkiniz Yok.";
+        public static string AuthorizationDenied = "Yetkiniz Yok.";
 
         #region AuthService
 
@@ -51,9 +62,11 @@ namespace Business.Constants
         public static string SuccessfulLogin = "Giriş Başarılı";
         public static string UserAlreadyExists = "Kullanıcı Zaten Var";
         public static string AccessTokenCreated = "Token  Oluşturuldu";
+
         #endregion
 
 
         
     }
+
 }
