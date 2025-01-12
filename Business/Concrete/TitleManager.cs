@@ -24,6 +24,13 @@ namespace Business.Concrete
             return new SuccessDataResult<List<Title>>(_titleDal.GetAll(), Messages.TitleList);
         }
 
+        public IDataResult<Title> GetByName(string title)
+        {
+            return new SuccessDataResult<Title>(_titleDal.Get(x => x.TitleName ==title));
+        }
+
+       
+
         public IResult Add(Title title)
         {
             _titleDal.Add(title);

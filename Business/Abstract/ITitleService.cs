@@ -11,6 +11,7 @@ namespace Business.Abstract
     public interface ITitleService
     {
         IDataResult<List<Title>> GetAll();
+        IDataResult<Title> GetByName(string title);
         IResult Add(Title title);
     }
 }

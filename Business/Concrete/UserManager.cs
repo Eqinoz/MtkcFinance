@@ -35,12 +35,12 @@ namespace Business.Concrete
             _userDal = userDal;
 
         }
-        [SecuredOperation("user.add,Admin")]
+        //[SecuredOperation("user.add,Admin")]
         [ValidationAspect(typeof(UserValidator))]
         public IResult Add(Users users)
         {
           IResult result =  BusinessRules.Run(CheckIfUser(users.FirstName, users.LastName));
-            if (result != null)
+            if (result!=null)
             {
                 return result;
             }

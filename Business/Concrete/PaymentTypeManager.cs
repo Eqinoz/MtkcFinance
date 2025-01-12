@@ -5,6 +5,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using Business.Constants;
@@ -24,6 +25,18 @@ namespace Business.Concrete
         {
             _paymentTypeDal.Add(paymentType);
             return new SuccessResult(Messages.PaymentTypeAdd);
+        }
+
+        public IResult Deleted(int id)
+        {
+            PaymentType paymentType = _paymentTypeDal.Get(x => x.Id == id);
+            if (paymentType!=null)
+            {
+                _paymentTypeDal.Delete(paymentType);
+                return new SuccessResult(Messages.PaymentTypeDeleted);
+            }
+
+            return new ErrorResult(Messages.PaymentTypeNotDeleted);
         }
 
         public IDataResult<List<PaymentType>> GetAll()

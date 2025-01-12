@@ -48,5 +48,16 @@ namespace WebAPI.Controllers
             }
             return BadRequest();
         }
+
+        [HttpDelete("deleted")]
+        public IActionResult Delete(int id)
+        {
+            var result = _paymentTypeService.Deleted(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest();
+        }
     }
 }

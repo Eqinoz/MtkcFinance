@@ -16,18 +16,21 @@ namespace WebAPI.Controllers
          ICompanyService _companyService;
          IPaymentTypeService _paymentTypeService;
          IPaymentListService _paymentListService;
+         ITitleService _titleService;
 
         public HistoryPaymentListController(IHistoryPaymentListService historyPaymentListService,
             IUserService userService,
             ICompanyService companyService,
             IPaymentTypeService paymentTypeService,
-            IPaymentListService paymentListService)
+            IPaymentListService paymentListService,
+            ITitleService titleService)
         {
             _historyPaymentListService = historyPaymentListService;
             _userService = userService;
             _companyService = companyService;
             _paymentTypeService = paymentTypeService;
             _paymentListService = paymentListService;
+            _titleService = titleService;
         }
 
         [HttpGet("Get")]
@@ -47,9 +50,11 @@ namespace WebAPI.Controllers
             int UserId = _userService.GetByName(historyPaymentListDetailDto.UserName).Data.Id;
             int CompanyId = _companyService.GetById(historyPaymentListDetailDto.CompanyName).Data.Id;
             int PaymentTypeId = _paymentTypeService.GetById(historyPaymentListDetailDto.PaymentType).Data.Id;
+            int TitleId = _titleService.GetByName(historyPaymentListDetailDto.Title).Data.Id;
 
             HistoryPaymentList historyPaymentList = new HistoryPaymentList();
             historyPaymentList.UsersId = UserId;
+            historyPaymentList.TitleId=TitleId;
             historyPaymentList.DateAdded = historyPaymentListDetailDto.DateAdded;
             historyPaymentList.DatePaid=historyPaymentListDetailDto.DatePaid;
             historyPaymentList.CompanyId = CompanyId;

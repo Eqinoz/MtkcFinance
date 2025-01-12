@@ -44,8 +44,14 @@ namespace Business.Concrete
                 CompanyId = company.Id,
                 Status = true
             };
-            _userService.Add(user);
-            return new SuccessDataResult<Users>(user, Messages.UserRegistered);
+            var result = _userService.Add(user);
+            if (result.Success)
+            {
+                return new SuccessDataResult<Users>(user, Messages.UserRegistered);
+            }
+
+            return new ErrorDataResult<Users>("Bu İsim Ve Soyisimden kayıtlı kullanıcı var.");
+
         }
 
         public IDataResult<Users> Login(UserForLoginDto userForLoginDto)

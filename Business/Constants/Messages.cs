@@ -40,6 +40,8 @@ namespace Business.Constants
         public static string SuccessPaymentList = "Ödeme Eklendi";
         public static string PaymentDeleted = "Ödeme Sİlindi";
         public static string PaymentNotDeleted = "Ödeme Silinemedi";
+        public static string PaymentTypeDeleted = "Ödeme Tipi Silindi";
+        public static string PaymentTypeNotDeleted = "Ödeme Tipi Silinemedi!";
 
         #endregion
 

@@ -20,12 +20,14 @@ namespace DataAccess.Concrete.EntityFramework
                     join c in context.Company on hpl.CompanyId equals c.Id
                     join u in context.Users on hpl.UsersId equals u.Id
                     join pt in context.PaymentType on hpl.PaymentTypeId equals pt.Id
+                    join t in context.Title on hpl.TitleId equals t.Id
                     select new HistoryPaymentListDetailDto
                     {
                         Id = hpl.Id,
                         DateAdded = hpl.DateAdded,
                         DatePaid = hpl.DatePaid,
                         UserName = u.FirstName + " " + u.LastName,
+                        Title = t.TitleName,
                         CompanyName = c.CompanyName,
                         PaymentOfPlace = hpl.PlaceOfPayment,
                         PaymentType = pt.Payment_Type,

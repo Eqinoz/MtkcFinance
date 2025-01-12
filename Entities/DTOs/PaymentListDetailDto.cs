@@ -10,6 +10,7 @@ namespace Entities.DTOs
     public class PaymentListDetailDto:IDto
     {
         public int Id { get; set; }
+        public string Title { get; set; }
         public DateTime DateAdded { get; set; }
         public string UserName { get; set; }
         public string CompanyName { get; set; }

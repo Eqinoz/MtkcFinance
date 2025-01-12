@@ -13,6 +13,7 @@ namespace Entities.DTOs
         public DateTime DateAdded { get; set; }
         public DateTime DatePaid { get; set; }
         public string UserName { get; set; }
+        public string Title { get; set; }
         public string CompanyName { get; set; }
         public string PaymentOfPlace { get; set; }
         public string PaymentType { get; set; }

@@ -13,6 +13,7 @@ namespace Business.Abstract
         IDataResult<List<PaymentType>>  GetAll();
         IDataResult<PaymentType> GetById(string name);
         IResult Add(PaymentType paymentType);
+        IResult Deleted(int id);
 
     }
 }
