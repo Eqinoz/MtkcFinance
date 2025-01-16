@@ -13,7 +13,9 @@ namespace DataAccess.Concrete.EntityFramework
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"server=YOSHI\YOSHI;Database=MTKC;Trusted_Connection=true;TrustServerCertificate=true");
+            optionsBuilder.UseSqlServer(@"Server=mtkc.c9sq2as4s1oa.eu-central-1.rds.amazonaws.com;Database=MTKC;User Id=admin;Password=Sinan7980;TrustServerCertificate=True;");
+            string connectionString = "";
+
         }
 
         public DbSet<Users> Users { get; set; } 
